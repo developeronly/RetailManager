@@ -24,19 +24,18 @@ Steps to run this application
 1. Clone it
 2. cd inside the repo
 3. And hit `mvn spring-boot:run`
-```
+
 Which will run the application using default tomcat and on default port 8080.
 
-```
 While using postman you need to add two headers
 ```
 Key: Accept Value: application/json
+```
 ```
 Key: Content-Type Value: application/json
 ```
 
 For adding a new shop:
-```
 Url would be
 ```
 http://localhost:8080/api/v1/shops
@@ -129,6 +128,7 @@ Request payload would be something like:
 }
 ```
 Which will return
+```
 {
     "name": "name of the shop",
     "shopAddress": {
