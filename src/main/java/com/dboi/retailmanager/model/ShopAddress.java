@@ -1,20 +1,31 @@
 package com.dboi.retailmanager.model;
 
 public class ShopAddress {
-    private final int shopNumber;
-    private final int postCode;
+    private int shopNumber;
+    private int postCode;
 
     public ShopAddress(int shopNumber, int postCode) {
         this.shopNumber = shopNumber;
         this.postCode = postCode;
     }
 
+    public ShopAddress() {
+    }
+
     public int getShopNumber() {
         return shopNumber;
     }
 
+    public void setShopNumber(int shopNumber) {
+        this.shopNumber = shopNumber;
+    }
+
     public int getPostCode() {
         return postCode;
+    }
+
+    public void setPostCode(int postCode) {
+        this.postCode = postCode;
     }
 
     @Override

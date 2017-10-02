@@ -1,20 +1,31 @@
 package com.dboi.retailmanager.model;
 
 public class Shop {
-    private final String name;
-    private final ShopAddress shopAddress;
+    private String name;
+    private ShopAddress shopAddress;
 
     public Shop(String name, ShopAddress shopAddress) {
         this.name = name;
         this.shopAddress = shopAddress;
     }
 
+    public Shop() {
+    }
+
     public String getName() {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public ShopAddress getShopAddress() {
         return shopAddress;
+    }
+
+    public void setShopAddress(ShopAddress shopAddress) {
+        this.shopAddress = shopAddress;
     }
 
     @Override
