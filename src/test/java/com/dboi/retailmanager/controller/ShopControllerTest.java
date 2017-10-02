@@ -10,6 +10,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class ShopControllerTest {
 
@@ -37,4 +38,11 @@ public class ShopControllerTest {
         assertEquals(3, shops.size());
     }
 
+    @Test
+    public void verifyEmptyListOfShops() {
+        List<Shop> shops = new ArrayList<>();
+        ShopController shopController = new ShopController();
+        shops = shopController.list();
+        assertTrue(shops.isEmpty());
+    }
 }
