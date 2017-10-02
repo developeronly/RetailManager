@@ -3,6 +3,8 @@ package com.dboi.retailmanager.model;
 public class Shop {
     private String name;
     private ShopAddress shopAddress;
+    private double latitude;
+    private double longitude;
 
     public Shop(String name, ShopAddress shopAddress) {
         this.name = name;
@@ -26,6 +28,22 @@ public class Shop {
 
     public void setShopAddress(ShopAddress shopAddress) {
         this.shopAddress = shopAddress;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 
     @Override
