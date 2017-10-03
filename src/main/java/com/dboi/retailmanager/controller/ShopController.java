@@ -18,7 +18,6 @@ public class ShopController {
     @Autowired
     private ShopService shopService;
 
-
     @RequestMapping(value = "shops", method = RequestMethod.POST)
     public Shop addShop(@RequestBody Shop shop) {
         shopService.add(shop);

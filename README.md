@@ -2,7 +2,7 @@
 
 Simple REST API for finding nearest shop using Google [Geocoding API](https://developers.google.com/maps/documentation/geocoding/intro).
 
-Base URL would be
+##### Base URL would be
 ```
 http://localhost:8080/api/v1/
 ```
@@ -20,14 +20,18 @@ For fetching a shop nearby given location
 GET http://localhost:8080/api/v1/shops/{latitude}/{longitude}
 ```
 
-Steps to run this application
+##### System Prerequisites
+- `Maven`
+- `Java 8`
+
+##### Steps to run this application
 1. Clone it
 2. cd inside the repo
 3. And hit `mvn spring-boot:run`
 
 Which will run the application using default tomcat and on default port 8080.
 
-While using postman you need to add two headers
+##### While using postman you need to add two headers
 ```
 Key: Accept Value: application/json
 ```
@@ -35,7 +39,7 @@ Key: Accept Value: application/json
 Key: Content-Type Value: application/json
 ```
 
-For adding a new shop:
+##### For adding a new shop:
 Url would be
 ```
 http://localhost:8080/api/v1/shops
@@ -64,7 +68,7 @@ Which will return
 }
 ```
 
-For fetching all available shops
+##### For fetching all available shops
 ```
 Url would be
 ```
@@ -109,7 +113,7 @@ Which will return
 ]
 ```
 
-For fetching a shop nearby given location
+##### For fetching a shop nearby given location
 ```
 Url would be
 ```
@@ -140,3 +144,10 @@ Which will return
 }
 ```
 
+##### Improvement Areas
+- `Setup a logger`
+- `There is no persistent system for storing data. We can use FlyWay for writing migrations and i think it's better to use PostgreSQL with PostGIS extension as this application is GIS based.`
+- `There are some refactoring needed which i didn't did to make this code source available in time.`
+- `ReadMe can be better`
+- `We can use Spring Actuator for production ready code. Which will work as DevOps for us.`
+- `Needed to add some more test cases.`

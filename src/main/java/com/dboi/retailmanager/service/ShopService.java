@@ -1,17 +1,13 @@
 package com.dboi.retailmanager.service;
 
 import com.dboi.retailmanager.model.Shop;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.maps.GeoApiContext;
 import com.google.maps.GeocodingApi;
-import com.google.maps.errors.ApiException;
 import com.google.maps.model.GeocodingResult;
 import com.google.maps.model.LatLng;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -43,21 +39,13 @@ public class ShopService {
     }
 
     public void add(Shop shop) {
-        GeocodingResult[] results = new GeocodingResult[0];
         try {
-            results = GeocodingApi.geocode(getApiContext(),
+            GeocodingResult[] results = GeocodingApi.geocode(getApiContext(),
                     String.valueOf(shop.getShopAddress().getPostCode())).await();
-            LatLng latLng = results[0].geometry.location;
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            System.out.println(gson.toJson(results[0].geometry.location));
-            shop.setLatitude(latLng.lat);
-            shop.setLongitude(latLng.lng);
+            LatLng shopLocation = results[0].geometry.location;
+            shop.setLocation(shopLocation);
             shops.add(shop);
-        } catch (ApiException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

@@ -1,6 +1,5 @@
 package com.dboi.retailmanager.controller;
 
-
 import com.dboi.retailmanager.model.Shop;
 import com.dboi.retailmanager.model.ShopAddress;
 import org.junit.Test;
@@ -23,6 +22,12 @@ public class ShopControllerTest {
     @Autowired
     private ShopController shopController;
 
+    private void addThreeShops() {
+        shopController.addShop(new Shop("xyz", new ShopAddress(1, 411043)));
+        shopController.addShop(new Shop("abc", new ShopAddress(2, 411044)));
+        shopController.addShop(new Shop("pqr", new ShopAddress(3, 411045)));
+    }
+
     @Test
     public void addShop() {
         int shopNumber = 1;
@@ -37,9 +42,7 @@ public class ShopControllerTest {
     @Test
     public void listShops() {
         List<Shop> shops = new ArrayList<>();
-        shopController.addShop(new Shop("xyz", new ShopAddress(1, 411043)));
-        shopController.addShop(new Shop("abc", new ShopAddress(2, 411044)));
-        shopController.addShop(new Shop("pqr", new ShopAddress(3, 411045)));
+        addThreeShops();
         shops = shopController.list();
         assertFalse(shops.isEmpty());
         assertEquals(3, shops.size());
@@ -61,12 +64,9 @@ public class ShopControllerTest {
     }
 
     public void shopNearByCustomersLocationWhenThereIsOnlyMoreThanOneShop() {
-        List<Shop> shops = new ArrayList<>();
-        shopController.addShop(new Shop("xyz", new ShopAddress(1, 411043)));
-        shopController.addShop(new Shop("abc", new ShopAddress(2, 411044)));
-        shopController.addShop(new Shop("pqr", new ShopAddress(3, 411045)));
+        addThreeShops();
         Shop nearestShop = shopController.shopNearByLocation(18.4028691, 73.8536683);
-        assertEquals(new Shop("pqr", new ShopAddress(3, 411045)), nearestShop);
+        assertEquals("pqr", nearestShop.getName());
     }
 
 }

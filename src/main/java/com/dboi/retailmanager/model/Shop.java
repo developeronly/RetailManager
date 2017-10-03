@@ -1,5 +1,7 @@
 package com.dboi.retailmanager.model;
 
+import com.google.maps.model.LatLng;
+
 public class Shop {
     private String name;
     private ShopAddress shopAddress;
@@ -71,6 +73,11 @@ public class Shop {
                 "name='" + name + '\'' +
                 ", shopAddress=" + shopAddress +
                 '}';
+    }
+
+    public void setLocation(LatLng shopLocation) {
+        this.setLatitude(shopLocation.lat);
+        this.setLongitude(shopLocation.lng);
     }
 
 }
